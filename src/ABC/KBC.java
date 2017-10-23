@@ -5,9 +5,16 @@
  */
 package ABC;
 
+
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+ 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -42,6 +49,7 @@ public class KBC extends javax.swing.JFrame {
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(2000, 862));
@@ -91,6 +99,16 @@ public class KBC extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ABC/images/22.jpg"))); // NOI18N
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ABC/images/1111.jpg"))); // NOI18N
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTextField1.setBackground(new java.awt.Color(0, 0, 0));
         jTextField1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -101,24 +119,56 @@ public class KBC extends javax.swing.JFrame {
         jTextField2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(255, 255, 255));
         jTextField2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
+        jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField2MouseClicked(evt);
+            }
+        });
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jTextField3.setBackground(new java.awt.Color(0, 0, 0));
         jTextField3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(255, 255, 255));
         jTextField3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
+        jTextField3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField3MouseClicked(evt);
+            }
+        });
 
         jTextField4.setBackground(new java.awt.Color(0, 0, 0));
         jTextField4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(255, 255, 255));
         jTextField4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
+        jTextField4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField4MouseClicked(evt);
+            }
+        });
 
         jTextField5.setBackground(new java.awt.Color(0, 0, 0));
         jTextField5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jTextField5.setForeground(new java.awt.Color(255, 255, 255));
         jTextField5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
+        jTextField5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField5MouseClicked(evt);
+            }
+        });
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField5ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Next");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
             }
         });
 
@@ -148,7 +198,9 @@ public class KBC extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(260, 260, 260))
+                .addGap(52, 52, 52)
+                .addComponent(jButton2)
+                .addGap(135, 135, 135))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 1053, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -176,23 +228,28 @@ public class KBC extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
-                    .addComponent(jTextField3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+                            .addComponent(jTextField3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField5)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton2)))
                 .addGap(189, 189, 189))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    int k=0;
     private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
         this.getContentPane().setBackground(Color.black);
     }//GEN-LAST:event_formMouseMoved
-
+    String SelectedAnswer;
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         jTextField1.setText("Want to be a Crorepati?");
         jTextField2.setText("                     ");
@@ -204,7 +261,7 @@ public class KBC extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_formWindowActivated
-
+    
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
@@ -215,11 +272,36 @@ public class KBC extends javax.swing.JFrame {
         { 
             imglist1[i] = new ImageIcon(getClass().getResource("/ABC/images/Picture122.png"));
         }
-        if(fifty<0)
-            fifty=1;
-        jLabel1.setIcon(imglist1[fifty]);
+                if(fifty<0)
+                 fifty=1;
+            
+         jLabel1.setIcon(imglist1[fifty]);
+         fifty++;
+        if(answer.equals(option1))   //here a is Option 1
+        {
+            jTextField3.setText("             ");
+            jTextField5.setText("             ");
+        }
+        else if(answer.equals(option2))
+        {
+            jTextField4.setText("             ");
+            jTextField2.setText("             ");
+        }
+        else if(answer.equals(option3))
+        {
+            jTextField3.setText("             ");
+            jTextField2.setText("             ");
+        }
+        else
+        {
+            jTextField4.setText("             ");
+            jTextField3.setText("             ");
+        }
+        //answer should be global
+        
     }//GEN-LAST:event_jLabel1MouseClicked
-      int ddip=0;
+    int ddip=0;
+      
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         ImageIcon[] imglist1 = new ImageIcon[1];
         for(int i=0;i<imglist1.length;i++)
@@ -229,6 +311,7 @@ public class KBC extends javax.swing.JFrame {
         if(ddip<0)
             ddip=1;
         jLabel2.setIcon(imglist1[ddip]);
+        ddip++;
     }//GEN-LAST:event_jLabel2MouseClicked
         int switch1=0;
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
@@ -240,6 +323,8 @@ public class KBC extends javax.swing.JFrame {
         if(switch1<0)
             switch1=1;
         jLabel3.setIcon(imglist1[switch1]);
+        switch1++;
+        ChangeQuestion();
     }//GEN-LAST:event_jLabel3MouseClicked
          int call=0;
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
@@ -251,32 +336,190 @@ public class KBC extends javax.swing.JFrame {
         if(call<0)
             call=1;
         jLabel4.setIcon(imglist1[call]);
+        call++;
     }//GEN-LAST:event_jLabel4MouseClicked
+  
+       
+    
+    String answer;
+    String option1,option2,option3,option4;
+    private void ChangeQuestion()
+    {   jTextField1.setBackground(Color.BLACK);
+        jTextField2.setBackground(Color.BLACK);
+        jTextField3.setBackground(Color.BLACK);
+        jTextField4.setBackground(Color.BLACK);
+        jTextField5.setBackground(Color.BLACK);
+        try
+            {
+               
+            resultSet = statement.executeQuery("SELECT Question,Option1,Option2,Option3,Option4,CorrectAnswer FROM KBCquestions where QuestionNumber="+(k++));
+        
+            while(resultSet.next()) {
+              jTextField1.setText(resultSet.getString("Question"));
+              jTextField2.setText(resultSet.getString("Option1"));
+              jTextField3.setText(resultSet.getString("Option2"));
+              jTextField4.setText(resultSet.getString("Option3"));
+              jTextField5.setText(resultSet.getString("Option4"));
+              answer=resultSet.getString("CorrectAnswer");
+              option1=resultSet.getString("Option1");
+              option2=resultSet.getString("Option2");
+              option3=resultSet.getString("Option3");
+              option4=resultSet.getString("Option4");
+            }
+        
+            
+            }
+            catch(SQLException e)
+            {
+        
+            
+            }    
+        if(k==16)
+        {
+        try {
+                if(null != connection) {
+ 
+                    // cleanup resources, once after processing
+                    resultSet.close();
+                    statement.close();
+ 
+                    // and then finally close connection
+                    connection.close();
+                }
+            }
+            catch (SQLException sqlex) {
+                sqlex.printStackTrace();
+            }
+            // Step 3: Closing database connection
+        }   
+    } 
+
+    int mp=-1;
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+
+        ChangeQuestion();
+                       ImageIcon[] imglist1 = new ImageIcon[16];
+                       int i;
+        if(mp>=1){
+          for( i=0;i<16;i++)
+        { 
+            imglist1[i] = new ImageIcon(getClass().getResource("/ABC/images/mp"+mp+".jpg"));
+        }
+             
+        jLabel6.setIcon(imglist1[mp]);
+        }mp++;
+        
+    }//GEN-LAST:event_jButton1MouseClicked
+    
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+             
+                
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
+        
+        SelectedAnswer=jTextField2.getText();
+        if(SelectedAnswer.equals(answer))
+        {
+            jTextField2.setBackground(Color.GREEN);
+        }
+        else
+        {
+             jTextField2.setBackground(Color.RED);
+        }
+        
+    }//GEN-LAST:event_jTextField2MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    private void jTextField3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseClicked
+        SelectedAnswer=jTextField3.getText();
+        if(SelectedAnswer.equals(answer))
+        {
+            jTextField3.setBackground(Color.GREEN);
+        }
+        else
+        {
+             jTextField3.setBackground(Color.RED);
+        }
+        
+    }//GEN-LAST:event_jTextField3MouseClicked
+
+    private void jTextField4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MouseClicked
+        SelectedAnswer=jTextField4.getText();
+        if(SelectedAnswer.equals(answer))
+        {
+            jTextField4.setBackground(Color.GREEN);
+        }
+        else
+        {
+             jTextField4.setBackground(Color.RED);
+        }
+        
+    }//GEN-LAST:event_jTextField4MouseClicked
+
+    private void jTextField5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField5MouseClicked
+        SelectedAnswer=jTextField5.getText();
+        if(SelectedAnswer.equals(answer))
+        {
+            jTextField5.setBackground(Color.GREEN);
+        }
+        else
+        {
+             jTextField5.setBackground(Color.RED);
+        }
+        
+    }//GEN-LAST:event_jTextField5MouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+
+        ChangeQuestion();
+                       ImageIcon[] imglist1 = new ImageIcon[1];
+        for(int i=0;i<imglist1.length;i++)
+        { 
+            imglist1[i] = new ImageIcon(getClass().getResource("/ABC/images/mp"+k+".jpg"));
+        }
+        if(mp<0)
+            mp=1;
+        jLabel6.setIcon(imglist1[mp]);
+        mp++;
+    }//GEN-LAST:event_jButton2MouseClicked
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(KBC.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    static Connection connection = null;
+    static Statement statement = null;
+    static ResultSet resultSet = null;
         
-        //</editor-fold>
-
-        /* Create and display the form */
+    public static void main(String args[]) {
+        
+        try {
+ 
+            Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+        }
+        catch(ClassNotFoundException cnfex) {
+ 
+            System.out.println("Problem in loading or "
+                    + "registering MS Access JDBC driver");
+        }
+        try {
+ 
+            String msAccDB = "C:\\Sayali\\KBCquestions.accdb";
+            String dbURL = "jdbc:ucanaccess://" + msAccDB; 
+ 
+            connection = DriverManager.getConnection(dbURL); 
+            statement = connection.createStatement();
+            
+        }
+        
+        
+        
+        catch(SQLException sqlex){
+            sqlex.printStackTrace();
+        }
         java.awt.EventQueue.invokeLater(() -> {
             new KBC().setVisible(true);
         });
@@ -284,6 +527,7 @@ public class KBC extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
